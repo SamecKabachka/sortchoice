@@ -1,14 +1,28 @@
 #include <iostream>
-#define N 10
+#include <vector>
+#include <stdlib.h> // нужен для вызова функций rand(), srand()
+#include <time.h> // нужен для вызова функции time()
+//#define N 10
 
 using namespace std;
 
 int main()
 {
-	int mas[N] = { 1, 25, 6, 32, 43, 5, 96, 23, 4, 55 };
+	srand(time(NULL));
 
-	int min = 0; // для записи минимального значения
-	int buf = 0; // для обмена значениями 
+	//int mas[N] = { 1, 25, 6, 32, 43, 5, 96, 23, 4, 55 };
+	vector <int> mas;
+
+	int min = 0, // для записи минимального значения
+		buf = 0;// для обмена значениями 
+		
+
+	for (int i = 0; i < 10; i++)
+	{
+		mas.push_back(-100 + rand() % (101 - (-100) + 1));
+	}
+
+	int N = size(mas);
 
 	/*********** Начало сортировки **************/
 	for (int i = 0; i < N; i++)
