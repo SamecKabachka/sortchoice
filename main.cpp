@@ -1,34 +1,34 @@
 #include <iostream>
+#define N 10
 
 using namespace std;
 
 int main()
 {
-	int mas[6] = { 5, 9, 2, 7, 11, 6 },
-		tmp;
+	int mas[N] = { 1, 25, 6, 32, 43, 5, 96, 23, 4, 55 };
 
-	for (int i = 0; i < 6; i++)
+	int min = 0; // дл€ записи минимального значени€
+	int buf = 0; // дл€ обмена значени€ми 
+
+	/*********** Ќачало сортировки **************/
+	for (int i = 0; i < N; i++)
 	{
-		int index = i;
-
-		for (int j = i+1; j < 6; j++)
+		min = i; // запомним номер текущей €чейки, как €чейки с минимальным значением
+		// в цикле найдем реальный номер €чейки с минимальным значением
+		for (int j = i + 1; j < N; j++)
+			min = (mas[j] < mas[min]) ? j : min;
+		// cделаем перестановку этого элемента, помен€в его местами с текущим
+		if (i != min)
 		{
-			if (mas[index] > mas[j])
-			{
-				index = j;
-			}
+			buf = mas[i];
+			mas[i] = mas[min];
+			mas[min] = buf;
 		}
-		tmp = mas[i];
-		mas[i] = mas[index];
-		mas[index] = tmp;
-
-		
 	}
 
-	for (int i = 0; i < 6; i++)
-	{
-		cout << mas[i] << " ";
-	}
+	for (int i = 0; i < N; i++) //¬ывод отсортированного массива
+		cout << mas[i] << ' ';
+	cout << endl;
 
 	return 0;
 }
