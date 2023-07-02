@@ -35,11 +35,17 @@ int main()
 				break;
 
 			case 3:
+				if (size(mas) == 0)
+				{
+					cout << "массив пуст!" << endl; 
+					system("pause");
+					break;
+				}
 				if (search_time)
 				{
-					print(mas);
+					print(mas, search_time);
 				}
-				else print(mas, search_time);
+				else print(mas);
 				system("pause");
 				break;
 
