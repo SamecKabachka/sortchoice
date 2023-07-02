@@ -29,12 +29,18 @@ int main()
 				break;
 
 			case 2:
-				search_time = sort(mas);
+				search_time = unidirectional_sort(mas);
 				cout << "массив отсортирован" << endl;
 				system("pause");
 				break;
 
 			case 3:
+				search_time = bidirectional_sort(mas);
+				cout << "массив отсортирован" << endl;
+				system("pause");
+				break;
+
+			case 4:
 				if (search_time)
 				{
 					print(mas);
