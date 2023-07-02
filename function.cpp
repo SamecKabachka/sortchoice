@@ -18,7 +18,7 @@ void fill_out(vector<int>& mas)//заполнение массива
 	}
 }
 
-unsigned int sort(vector<int>& mas)//сортировка массива
+unsigned int bidirectional_sort(vector<int>& mas)//двунаправленная сортировка массива
 {
 	unsigned int start_time = clock(); // начальное время
 
@@ -40,6 +40,33 @@ unsigned int sort(vector<int>& mas)//сортировка массива
 			mas[i] = mas[min];
 			mas[min] = buf;
 		}
+	}
+	unsigned int end_time = clock(); // конечное время
+	return end_time - start_time; // искомое время
+}
+
+unsigned int unidirectional_sort(vector<int>& mas)//однонаправленная сортировка массива
+{
+	unsigned int start_time = clock(); // начальное время
+
+	int N = size(mas), tmp;
+
+	for (int i = 0; i < N; i++)
+	{
+		int index = i;
+
+		for (int j = i + 1; j < N; j++)
+		{
+			if (mas[index] > mas[j])
+			{
+				index = j;
+			}
+		}
+		tmp = mas[i];
+		mas[i] = mas[index];
+		mas[index] = tmp;
+
+
 	}
 	unsigned int end_time = clock(); // конечное время
 	return end_time - start_time; // искомое время
