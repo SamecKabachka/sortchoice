@@ -13,7 +13,7 @@ void menu()//вывод меню
 
 void fill_out(vector<int>& mas)//заполнение массива
 {
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 10000; i++)
 	{
 		mas.push_back(-100 + rand() % (101 - (-100) + 1));
 	}
@@ -22,26 +22,35 @@ void fill_out(vector<int>& mas)//заполнение массива
 unsigned int bidirectional_sort(vector<int>& mas)//двунаправленная сортировка массива
 {
 	unsigned int start_time = clock(); // начальное время
-
+	
 	int N = size(mas);
 	/*********** Начало сортировки **************/
-	for (int i = 0; i < N; i++)
-	{
-		int min = 0, // для записи минимального значения
-			buf = 0;// для обмена значениями 
 
-		min = i; // запомним номер текущей ячейки, как ячейки с минимальным значением
-		// в цикле найдем реальный номер ячейки с минимальным значением
-		for (int j = i + 1; j < N; j++)
-			min = (mas[j] < mas[min]) ? j : min;
-		// cделаем перестановку этого элемента, поменяв его местами с текущим
-		if (i != min)
-		{
-			buf = mas[i];
-			mas[i] = mas[min];
-			mas[min] = buf;
+	for (int i = 0, j = N - 1; i < j; i++, j--) {
+		int min = mas[i], max = mas[i];
+		int min_i = i, max_i = i;
+		for (int k = i; k <= j; k++) {
+			if (mas[k] > max) {
+				max = mas[k];
+				max_i = k;
+			}
+			else if (mas[k] < min) {
+				min = mas[k];
+				min_i = k;
+			}
 		}
+
+		
+		swap(mas[i], mas[min_i]);
+
+	
+		if (mas[min_i] == max)
+			swap(mas[j], mas[min_i]);
+		else
+			swap(mas[j], mas[max_i]);
 	}
+
+
 	unsigned int end_time = clock(); // конечное время
 	return end_time - start_time; // искомое время
 }
@@ -79,7 +88,7 @@ void print(vector<int>& mas, unsigned int search_time)//выворд массива и времени
 
 	for (int i = 0; i < N; i++) 
 		cout << mas[i] << ' ';
-	cout << endl << "затраченое время: " << search_time << " сек.";
+	cout << endl << "затраченое время: " << search_time << " мсек.";
 }
 
 void print(vector<int>& mas)//выворд массива

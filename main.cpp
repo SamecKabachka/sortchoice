@@ -10,7 +10,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	srand(time(NULL));
+	//srand(time(NULL));
 //---------------------блок кода--------------------
 	do {
 		menu();
@@ -41,7 +41,7 @@ int main()
 				break;
 
 			case 4:
-				if (search_time)
+				if (search_time == NULL)
 				{
 					print(mas);
 				}
