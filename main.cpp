@@ -10,7 +10,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	//srand(time(NULL));
+	srand(time(NULL));
 //---------------------блок кода--------------------
 	do {
 		menu();
