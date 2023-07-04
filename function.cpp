@@ -2,20 +2,47 @@
 
 void menu() // вывод меню
 {
-	cout << "0. Выйти из программы" << endl;
-	cout << "1. Заполнить массив" << endl;
-	cout << "2. Сортировать массив с помощью однонаправленного алгоритма выбора (selection sort)" << endl;
-	cout << "3. Сортировать массив с помощью двунаправленного алгоритма выбора (selection sort)" << endl;
-	cout << "4. Вывести массив на экран" << endl;
-	cout << "Выберите действие: ";
+	cout << "0. выйти из программы" << endl;
+	cout << "1. заполнить массив" << endl;
+	cout << "2. считать массив" << endl;
+	cout << "3. отсортировать массив с помощью однонаправленного алгоритма выбора (selection sort)" << endl;
+	cout << "4. отсортировать массив с помощью двунаправленного алгоритма выбора (selection sort)" << endl;
+	cout << "5. вывести массив на экран" << endl;
+	cout << "6. записать массив в файл" << endl;
+	cout << "выберите действие: ";
 }
 
-void fill_out(vector<int>& mas) // заполнение массива
+void fill_out(int N) // заполнение массива
 {
-	for (int i = 0; i < 10000; i++)
+	ofstream fout("out.txt");
+	for (int i = 0; i < N; i++)
 	{
-		mas.push_back(-100 + rand() % (101 - (-100) + 1));
+		fout << (-100 + rand() % (101 - (-100) + 1)) << " ";
 	}
+	fout.close();
+}
+
+void read(vector<int>& mas, int N)
+{
+	ifstream fin("out.txt");
+	int tmp;
+	for (int i = 0; i < N; i++)
+	{
+		fin >> tmp;
+		mas.push_back(tmp);
+	}
+	fin.close();
+}
+
+void write(vector<int>& mas)
+{
+	int N = size(mas);
+	ofstream fout("rez.txt");
+	for (int i = 0; i < N; i++)
+	{
+		fout << mas[i] << " ";
+	}
+	fout.close();
 }
 
 unsigned int bidirectional_sort(vector<int>& mas) // двунаправленная сортировка массива
@@ -39,7 +66,7 @@ unsigned int bidirectional_sort(vector<int>& mas) // двунаправленная сортировка 
 			}
 		}
 		swap(mas[i], mas[min_i]);
-	
+
 		if (mas[min_i] == max)
 			swap(mas[j], mas[min_i]);
 		else
@@ -77,10 +104,10 @@ void print(vector<int>& mas, unsigned int search_time) // выворд массива и време
 {
 	int N = size(mas);
 
-	for (int i = 0; i < N; i++) 
+	for (int i = 0; i < N; i++)
 		cout << mas[i] << ' ';
 
-	cout << endl << "затраченое время: " << search_time << " мсек." << endl;
+	cout << endl << "затраченое времЯ: " << search_time << " мсек." << endl;
 }
 
 void print(vector<int>& mas) // выворд массива
