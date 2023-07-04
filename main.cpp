@@ -1,15 +1,13 @@
 #include "function.h"
 
-
 int main()
 {
 //------------------блок переменных-----------------
-	unsigned int num, search_time = NULL;//переменная для записи пункта меню
+	unsigned int num, search_time = NULL; // переменная для записи пункта меню
 	vector <int> mas;
 //-------------------блок настроек------------------
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
 	srand(time(NULL));
 //---------------------блок кода--------------------
 	do {
@@ -53,8 +51,8 @@ int main()
 				cout << " Введено неверное число" << endl;
 		}
 		system("CLS");
-	} while(num);
 
+	} while(num);
 
 	return 0;
 }
