@@ -80,7 +80,7 @@ void print(vector<int>& mas, unsigned int search_time) // выворд массива и време
 	for (int i = 0; i < N; i++) 
 		cout << mas[i] << ' ';
 
-	cout << endl << "затраченое время: " << search_time << " мсек.";
+	cout << endl << "затраченое время: " << search_time << " мсек." << endl;
 }
 
 void print(vector<int>& mas) // выворд массива
